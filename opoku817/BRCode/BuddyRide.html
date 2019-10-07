@@ -5,10 +5,10 @@
 </head>
 <style>
 body {background-image:url(header1.jpg);
-background-position:center;
+background-position:top right;
 background-color :#65a773; 
 background-repeat:no-repeat;
-background-size: 900px 250px;;}
+background-size: 500px 80px;}
 </style>
 
 <title>Buddy Ride System</title>
@@ -18,11 +18,12 @@ background-size: 900px 250px;;}
 <hr>
 <form> 
 <h3>
+<form action="addstudent.php" method="POST"> 
   Enter Your Morrisville ID #:<br>
-  <input type="int" name="M#"><br><br>
+  <input type="int" name="Mnum"><br><br>
   
-    Enter PIN:<br>
-  <input type="int" name="Mpin"><br><br>
+    Enter Password:<br>
+  <input type="text" name="Mpass"><br><br>
   
   Enter Your First Name:<br>
   <input type="text" name="firstname"><br><br>
@@ -30,12 +31,12 @@ background-size: 900px 250px;;}
   Enter Your Last Name:<br>
  <input type="text" name="lastname"><br><br>
  
- <input type="radio" name="dn" value="ds"> Driving Student<br>
-<input type="radio" name="ns" value="ns"> Non-driving Student<br>
-
  
-</h3>
+<input type="submit" value="Submit">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button">Cancel</button>
  </form> 
+ </h3>
 <hr>
 
 <h2> SUNY Morrisville </h2>
