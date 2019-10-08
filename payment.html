@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Buddy Ride System</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+body {background-image:url(morrisville.jpg);
+background-position:top right;
+background-color :#65a773; 
+background-repeat:no-repeat;
+background-size: 500px 80px;;}
+#card{
+	position: relative;
+	float: left;
+}
+</style>
+<body>
+<div id="wrapper">
+	<header>
+		<h1>Buddy Ride System</h1>
+		<hr>
+	</header>
+	<main>
+</div>
+<div id ="card">
+	<h2> Payment Selection </h2>
+	<form action ="form.php" method = "post">
+		<h3>
+			M Number: <br>
+		<input type: "int" name="m_number"><br><br>
+			Card Name :<br>
+		<input type="text" name="name_card"><br><br>
+  
+			Card Number:<br>
+		<input type="int" name="card_number"><br><br>
+
+		Card Type:<br>
+		<input type="int" name="card_number"><br><br>
+
+		Expiration Date:<br>
+		<input type="int" name="card_number"><br><br>
+  
+			CIV:<br>
+		<input type="int" name="civ"><br><br>
+		<button type="submit" form="card" value="Submit">Submit</button>
+		<button type="cancel" form="card" value="Cancel">Cancel</button>
+		</h3>
+	</form>
+</div>
+</body>
+</html>
