@@ -1,55 +1,42 @@
-<!Doctype html>
 <html>
-<style>
-body {background-image:url(header1.jpg);
-background-position:top right;
-background-color :#65a773; 
-background-repeat:no-repeat;
-background-size: 500px 80px;}
-</style>
-
-<title>Buddy Ride System</title>
-<h1>Buddy Ride System </h1>
-<hr>
-<h2>Welcome to the Taxi System for Morrisville Students<br><br>Please Sign Up With Information Your Below </h2> 
-<hr>
+<body>
 <title> AddStudent </title>
-
+<h1>Student Registration</h1>
 <?php
 	 $errorCount=0;
 	//validation - ID	
-    if (empty($_POST["morrisvilleid"])) {
+    if (empty($_POST["mid"])) {
 		echo "<p> Morrisville Id field required !</p>";
 		$errorCount++;
 	}
 	else {
-		if(is_numeric($_POST["morrisvilleid"]))
-			$mid = $_POST["morrisvilleid"];
+		if(is_numeric($_POST["mid"]))
+			$mid = $_POST["mid"];
 		else{
 			echo("<p> Morrisville Id field must be a numeric value !</P>");
 			$errorCount++;
 		}	
 	} 
 	//validation - Password
-	if (empty($_POST["password"])){
+	if (empty($_POST["pass"])){
 		echo "<p> Password field is required !</p>";
 		$errorCount++;
 	}
 else {
-		if(is_string($_POST["password"]))
-			$pass = $_POST["password"];
+		if(is_string($_POST["pass"]))
+			$pass = $_POST["pass"];
 		else{
 			echo("<p> Password field must must be string value !</P>");
 			$errorCount++;
 		}	
 	} 
 			//validation - firstname
-	if (empty($_POST["firstname"])){
+	if (empty($_POST["fname"])){
 		echo "<p> Firstname field is required !</p>";
 		$errorCount++;
 	}
 	//validation - lastname
-		if (empty($_POST["lastname"])){
+		if (empty($_POST["lname"])){
 		echo "<p> Lastname field is required !</p>";
 		$errorCount++;
 	}	
@@ -60,9 +47,9 @@ if ($DBConnect !== FALSE)
 {
 	//create SQL query
 	$SQLstring = "INSERT INTO students" .
-	" (morrisville_id, password, firstname, lastname) " .
+	" (morrisvilleid, password, firstname, lastname) " .
 	" VALUES".
-	"('$_POST[morrisvilleid]', '$_POST[password]', '$_POST[firstname]', '$_POST[lastname]')";
+	"('$_POST[mid]', '$_POST[pass]', '$_POST[fname]', '$_POST[fname]')";
 
 $QueryResult = mysqli_query( $DBConnect, $SQLstring);
 if ($QueryResult === FALSE)
