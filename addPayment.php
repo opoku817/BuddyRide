@@ -15,18 +15,18 @@ body {
 <hr>
 <title>Add Payment </title>
 <?php
-	$DBName = "payment";
-	$DBConnect = mysqli_connect("localhost","root","");
-	if ($DBConnect === FALSE)
+	$DBName = "buddyridesystem";
+	$conn = mysqli_connect("localhost","root","");
+	if ($conn === FALSE)
 		echo "Connection error:".mysqli_error(). "\n";
 	else{
-		if(mysqli_select_db($DBConnect, $DBName) === FALSE){
+		if(mysqli_select_db($conn, $DBName) === FALSE){
 	
 		echo "Could not select the \"$DBName\"".
-		"database:" . mysqli_error($DBConnect). "\n";
+		"database:" . mysqli_error($conn). "\n";
 		//Close the connection
-		mysqli_close($DBConnect);
-			$DBConnect = FALSE;
+		mysqli_close($conn);
+			$conn = FALSE;
 		}
 	}
 			$errorCount=0;
@@ -49,7 +49,7 @@ body {
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["cardname"]))
+			if(is_string($_POST["cardname"]))
 				$mid = $_POST["cardname"];
 			else{
 				echo("<p> Card Name field must be a string value! </p>");
@@ -75,7 +75,7 @@ body {
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["cardtype"]))
+			if(is_string($_POST["cardtype"]))
 				$mid = $_POST["cardtype"];
 			else{
 				echo("<p> Card Type field must be a string value! </p>");
@@ -111,20 +111,18 @@ body {
 		if ($errorCount == 0){
 			if ($conn !== FALSE){
 				//create SQL query
-				$SQLstring = "INSERT INTO payment" .
+				$SQLstring = "INSERT INTO card" .
 				" (morrisvilleid, cardname, cardnumber, cardtype, cardexp, cvv) " .
 				" VALUES".
 				"('$_POST[morrisvilleid]','$_POST[cardname]','$_POST[cardnumber]', '$_POST[cardtype]', '$_POST[cardexp]', '$_POST[cvv]')";
 
 			$QueryResult = mysqli_query( $conn, $SQLstring);
-			if ($QueryResult == FALSE){
+			if ($QueryResult === FALSE)
 				echo "<p>Unable to execute the query.</p>".
-					"<p>Error code" . mysqli_errorno($conn).": "
+					"<p>Error code" . mysqli_errno($conn).": "
 						. mysqli_error($conn) . "</p>";
-			}
-			else{
+			else
 				echo "<p>Successfully added the record.<p>";
-			}
 			mysqli_close($conn);
 		}
 	}
