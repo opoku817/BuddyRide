@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Buddy Ride System</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+body {background-image:url(morrisville.jpg);
+background-position:top right;
+background-color :#65a773; 
+background-repeat:no-repeat;
+background-size: 500px 80px;;}
+#carinfo{
+	position: relative;
+	float: left;
+}
+</style>
+<body>
+<div id="wrapper">
+	<header>
+		<h1>Buddy Ride System</h1>
+		<hr>
+	</header>
+	<main>
+</div>
+<div id ="carinfo">
+	<h2> Car Information </h2>
+	<form action ="updateCar.php" method = "post">
+		<h3>
+			M Number: <br>
+		<input type: "int" name="morrisvilleid"><br><br>
+			Model:<br>
+		<input type="int" name="model"><br><br>
+			Year :<br>
+		<input type="text" name="year"><br><br>
+			License Plate:<br>
+		<input type="int" name="licenseplate"><br><br>
+		
+		<h4> <p><input type="reset" value = "Clear Form"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type= "submit" name = "update" value = "Update" /></p> </h4>
+		</h3>
+	</form>
+</div>
+</body>
+</html>
