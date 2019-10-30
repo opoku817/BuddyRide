@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head> <title>Buddy Ride System</title>
+<meta charset="utf-8">
+</head>
 <style>
 body {background-image:url(morrisville.jpg);
 background-position:top right;
@@ -8,8 +11,8 @@ background-repeat:no-repeat;
 background-size: 500px 80px;}
 </style>
 <h1> Buddy Ride System</h1>
-<hr>
-<h2> Driver/Car Registration</h2>
+<hr> 
+<h2> Ride Search:</h2>
 <?php
 	$DBName = "buddyridesystem";
 	$conn = mysqli_connect("localhost","root","");
@@ -25,7 +28,7 @@ background-size: 500px 80px;}
 			$conn = FALSE;
 		}
 	}
-			$errorCount=0;
+		$errorCount=0;
 		//validation CarID
 		if (empty($_POST["Car_ID"])){
 			echo "<p> Car ID field required! </p>";
@@ -117,13 +120,14 @@ background-size: 500px 80px;}
 				$errorCount++;
 			}
 		}
+		
 		if ($errorCount == 0){
 			if ($conn !== FALSE){
 				//create SQL query
 				$SQLstring = "INSERT INTO car" .
-				" (Car_ID, Car_Make, Car_Model, Car_Year, Car_Type, Destination, Morrisville_Id) " .
+				" (Destination, Morrisville_Id, Car_Model, Car_ID, Car_Make, Car_Year, Car_Type) " .
 				" VALUES".
-				"('$_POST[Car_ID]','$_POST[Car_Make]','$_POST[Car_Model]', '$_POST[Car_Year]','$_POST[Car_Type]', '$_POST[Destination]','$_POST[Morrisville_Id]')";
+				"('$_POST[Destination]','$_POST[Morrisville_Id]','$_POST[Car_Model]', '$_POST[Car_ID]', '$_POST[Car_Make]','$_POST[Car_Year]', '$_POST[Car_Type]')";
 
 			$QueryResult = mysqli_query( $conn, $SQLstring);
 			if ($QueryResult === FALSE)
