@@ -31,54 +31,54 @@ body {
 	}
 			$errorCount=0;
 		//validation morrisvilleid
-		if (empty($_POST["morrisvilleid"])){
+		if (empty($_POST["Morrisville_Id"])){
 			echo "<p> Morrisville Id field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["morrisvilleid"]))
-				$morrisvilleid = $_POST["morrisvilleid"];
+			if(is_numeric($_POST["Morrisville_Id"]))
+				$Morrisville_Id = $_POST["Morrisville_Id"];
 			else{
 				echo("<p> Morrisville Id field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
 		//validation password
-		if (empty($_POST["password"])){
-			echo "<p> Morrisville Id field required! </p>";
+		if (empty($_POST["Password"])){
+			echo "<p> Password field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["password"]))
-				$password = $_POST["password"];
+			if(is_string($_POST["Password"]))
+				$Password = $_POST["Password"];
 			else{
-				echo("<p> Morrisville Id field must be a string value! </p>");
+				echo("<p> Password field must be a string value! </p>");
 				$errorCount++;
 			}
 		}
-		//validation name
-		if  (empty($_POST["firstname"])){
-			echo "<p> Card Name field required! </p>";
+		//validation first name
+		if  (empty($_POST["Firstname"])){
+			echo "<p> First Name field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["firstname"]))
-				$firstname = $_POST["firstname"];
+			if(is_string($_POST["Firstname"]))
+				$Firstname = $_POST["Firstname"];
 			else{
-				echo("<p> Card Name field must be a string value! </p>");
+				echo("<p> First Name field must be a string value! </p>");
 				$errorCount++;
 			} 
 		}
 		//validation lastname
-		if (empty($_POST["lastname"])){
-			echo "<p> Morrisville Id field required! </p>";
+		if (empty($_POST["Lastname"])){
+			echo "<p> Last Name field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["lastname"]))
-				$lastname = $_POST["lastname"];
+			if(is_string($_POST["Lastname"]))
+				$Lastname = $_POST["Lastname"];
 			else{
-				echo("<p> Morrisville Id field must be a string value! </p>");
+				echo("<p> Last Name field must be a string value! </p>");
 				$errorCount++;
 			}
 		}
@@ -87,7 +87,7 @@ body {
 			if ($conn !== FALSE){
 				//create SQL query
 
-				$SQLupdate = "UPDATE account SET firstname = '$firstname', lastname = '$lastname', password = '$password' WHERE morrisvilleid = $morrisvilleid";
+				$SQLupdate = "UPDATE students SET Firstname = '$Firstname', Lastname = '$Lastname', Password = '$Password' WHERE Morrisville_Id = $Morrisville_Id";
 
 			$QueryResult = mysqli_query( $conn, $SQLupdate);
 			if ($QueryResult === FALSE)

@@ -13,7 +13,7 @@ body {
 <title> Buddy Ride System </title>
 <h1> Buddy Ride System </h1>
 <hr>
-<title>Add Payment </title>
+<title>Update Car </title>
 <?php
 	$DBName = "buddyridesystem";
 	$conn = mysqli_connect("localhost","root","");
@@ -30,55 +30,94 @@ body {
 		}
 	}
 			$errorCount=0;
-		//validation morrisvilleid
-		if (empty($_POST["morrisvilleid"])){
+		//validation Morrisville_Id
+		if (empty($_POST["Morrisville_Id"])){
 			echo "<p> Morrisville Id field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["morrisvilleid"]))
-				$morrisvilleid = $_POST["morrisvilleid"];
+			if(is_numeric($_POST["Morrisville_Id"]))
+				$Morrisville_Id = $_POST["Morrisville_Id"];
 			else{
 				echo("<p> Morrisville Id field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
-		//validation model
-		if (empty($_POST["model"])){
-			echo "<p> Morrisville Id field required! </p>";
+		//validation Car Model
+		if (empty($_POST["Car_Model"])){
+			echo "<p> Car Model field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["model"]))
-				$model = $_POST["model"];
+			if(is_string($_POST["Car_Model"]))
+				$Car_Model = $_POST["Car_Model"];
 			else{
-				echo("<p> Morrisville Id field must be a string value! </p>");
+				echo("<p> Car Model field must be a string value! </p>");
 				$errorCount++;
 			}
 		}
-		//validation year
-		if  (empty($_POST["year"])){
-			echo "<p> Card Name field required! </p>";
+		//validation Car Year
+		if  (empty($_POST["Car_Year"])){
+			echo "<p> Card Year field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["year"]))
-				$year = $_POST["year"];
+			if(is_numeric($_POST["Car_Year"]))
+				$Car_Year = $_POST["Car_Year"];
 			else{
-				echo("<p> Card Name field must be a numberic value! </p>");
+				echo("<p> Card Year field must be a numberic value! </p>");
 				$errorCount++;
 			} 
 		}
-		//validation licenseplate
-		if (empty($_POST["licenseplate"])){
-			echo "<p> Morrisville Id field required! </p>";
+		//validation Car_ID
+		if (empty($_POST["Car_ID"])){
+			echo "<p> CAr ID field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["licenseplate"]))
-				$licenseplate = $_POST["licenseplate"];
+			if(is_numeric($_POST["Car_ID"]))
+				$Car_ID = $_POST["Car_ID"];
 			else{
-				echo("<p> Morrisville Id field must be a string value! </p>");
+				echo("<p> Car ID field must be a numeric value! </p>");
+				$errorCount++;
+			}
+		}
+		//validation Car_Make
+		if (empty($_POST["Car_Make"])){
+			echo "<p> Car Make field required! </p>";
+			$errorCount++;
+		}
+		else {
+			if(is_string($_POST["Car_Make"]))
+				$Car_Make = $_POST["Car_Make"];
+			else{
+				echo("<p> Car Make field must be a string value! </p>");
+				$errorCount++;
+			}
+		}
+		//validation Car_Type
+		if (empty($_POST["Car_Type"])){
+			echo "<p> Car Type field required! </p>";
+			$errorCount++;
+		}
+		else {
+			if(is_string($_POST["Car_Type"]))
+				$Car_Type = $_POST["Car_Type"];
+			else{
+				echo("<p> Car Type field must be a string value! </p>");
+				$errorCount++;
+			}
+		}
+		//validation Destination
+		if (empty($_POST["Destination"])){
+			echo "<p> Destination field required! </p>";
+			$errorCount++;
+		}
+		else {
+			if(is_string($_POST["Destination"]))
+				$Destination = $_POST["Destination"];
+			else{
+				echo("<p> Destination field must be a string value! </p>");
 				$errorCount++;
 			}
 		}
@@ -87,7 +126,7 @@ body {
 			if ($conn !== FALSE){
 				//create SQL query
 
-				$SQLupdate = "UPDATE car SET model = '$model', year = $year, licenseplate = '$licenseplate' WHERE morrisvilleid = $morrisvilleid";
+				$SQLupdate = "UPDATE car SET Car_Model = '$Car_Model', Car_Make = '$Car_Make', Car_Year = '$Car_Year', Destination = '$Destination', Car_Type = '$Car_Type', Car_ID = '$Car_ID' WHERE Morrisville_Id = $Morrisville_Id";
 
 			$QueryResult = mysqli_query( $conn, $SQLupdate);
 			if ($QueryResult === FALSE)

@@ -11,7 +11,7 @@ background-position:top right;
 background-color :#65a773; 
 background-repeat:no-repeat;
 background-size: 500px 80px;;}
-#carinfo{
+#payinfo{
 	position: relative;
 	float: left;
 }
@@ -24,18 +24,24 @@ background-size: 500px 80px;;}
 	</header>
 	<main>
 </div>
-<div id ="carinfo">
-	<h2> Car Information </h2>
-	<form action ="updateCar.php" method = "post">
+<div id ="payinfo">
+	<h2> Update Payment Information </h2>
+	<form action ="updatePayment.php" method = "post">
 		<h3>
+			Recipt Number: <br>
+		<input type="int" name="Payment_ID"><br><br>
+			Card Name:<br>
+		<input type="int" name="Card_Name"><br><br>
+			Card Number :<br>
+		<input type="text" name="Card_Number"><br><br>
+			Card Type:<br>
+		<input type="int" name="Card_Type"><br><br>
+			Card Expiration:<br>
+		<input type="int" name="Card_Exp"><br><br>
+			CVV:<br>
+		<input type="int" name="CVV"><br><br>
 			M Number: <br>
-		<input type: "int" name="morrisvilleid"><br><br>
-			Model:<br>
-		<input type="int" name="model"><br><br>
-			Year :<br>
-		<input type="text" name="year"><br><br>
-			License Plate:<br>
-		<input type="int" name="licenseplate"><br><br>
+		<input type: "int" name="Morrisville_Id"><br><br>
 		
 		<h4> <p><input type="reset" value = "Clear Form"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type= "submit" name = "update" value = "Update" /></p> </h4>
