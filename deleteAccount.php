@@ -32,13 +32,13 @@ $DBName = "buddyridesystem";
 	}
 	 $errorCount=0;
 	//validation - ID	
-    if (empty($_POST["morrisvilleid"])) {
+    if (empty($_POST["Morrisville_Id"])) {
 		echo "<p> Morrisville Id field required !</p>";
 		$errorCount++;
 	}
 	else {
-		if(is_numeric($_POST["morrisvilleid"]))
-			$mid = $_POST["morrisvilleid"];
+		if(is_numeric($_POST["Morrisville_Id"]))
+			$mid = $_POST["Morrisville_Id"];
 		else{
 			echo("<p> Morrisville Id field must be a numeric value !</P>");
 			$errorCount++;
@@ -47,8 +47,8 @@ $DBName = "buddyridesystem";
 if ($errorCount == 0){
 	if ($conn !== FALSE){
 		//create SQL query
-		$SQLstring = "DELETE FROM account" .
-		" WHERE morrisvilleid = $mid";
+		$SQLstring = "DELETE FROM students" .
+		" WHERE Morrisville_Id = $mid";
 $QueryResult = mysqli_query( $conn, $SQLstring);
 if ($QueryResult === FALSE)
 	echo "<p>Unable to execute the query.</p>".

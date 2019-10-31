@@ -31,90 +31,103 @@ body {
 	}
 			$errorCount=0;
 		//validation morrisvilleid
-		if (empty($_POST["morrisvilleid"])){
+		if (empty($_POST["Morrisville_Id"])){
 			echo "<p> Morrisville Id field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["morrisvilleid"]))
-				$mid = $_POST["morrisvilleid"];
+			if(is_numeric($_POST["Morrisville_Id"]))
+				$mid = $_POST["Morrisville_Id"];
 			else{
 				echo("<p> Morrisville Id field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
-		//validation cardname
-		if  (empty($_POST["cardname"])){
+		//validation Card_Name
+		if  (empty($_POST["Card_Name"])){
 			echo "<p> Card Name field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["cardname"]))
-				$mid = $_POST["cardname"];
+			if(is_string($_POST["Card_Name"]))
+				$mid = $_POST["Card_Name"];
 			else{
 				echo("<p> Card Name field must be a string value! </p>");
 				$errorCount++;
 			} 
 		}
-		//validation cardnumber
-		if  (empty($_POST["cardnumber"])){
+		//validation Card Number
+		if  (empty($_POST["Card_Number"])){
 			echo "<p> Card Number field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["cardnumber"]))
-				$mid = $_POST["cardnumber"];
+			if(is_numeric($_POST["Card_Number"]))
+				$mid = $_POST["Card_Number"];
 			else{
 				echo("<p> Card Number field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
-		//validation cardtype
-		if  (empty($_POST["cardtype"])){
+		//validation Card_Type
+		if  (empty($_POST["Card_Type"])){
 			echo "<p> Card Type field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_string($_POST["cardtype"]))
-				$mid = $_POST["cardtype"];
+			if(is_string($_POST["Card_Type"]))
+				$mid = $_POST["Card_Type"];
 			else{
 				echo("<p> Card Type field must be a string value! </p>");
 				$errorCount++;
 			}
 		}
 		//validation cardexp
-		if  (empty($_POST["cardexp"])){
+		if  (empty($_POST["Card_Exp"])){
 			echo "<p> Card Expiration field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["cardexp"]))
-				$mid = $_POST["cardexp"];
+			if(is_numeric($_POST["Card_Exp"]))
+				$mid = $_POST["Card_Exp"];
 			else{
 				echo("<p> Card Expiration field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
 		//validation cvv
-		if  (empty($_POST["cvv"])){
+		if  (empty($_POST["CVV"])){
 			echo "<p> Card CVV field required! </p>";
 			$errorCount++;
 		}
 		else {
-			if(is_numeric($_POST["cvv"]))
-				$mid = $_POST["cvv"];
+			if(is_numeric($_POST["CVV"]))
+				$mid = $_POST["CVV"];
 			else{
 				echo("<p> CVV field must be a numeric value! </p>");
+				$errorCount++;
+			}
+		}
+		//validation Payment_ID
+		if  (empty($_POST["Payment_ID"])){
+			echo "<p> Recipt Number field required! </p>";
+			$errorCount++;
+		}
+		else {
+			if(is_numeric($_POST["Payment_ID"]))
+				$mid = $_POST["Payment_ID"];
+			else{
+				echo("<p> Recipt Number field must be a numeric value! </p>");
 				$errorCount++;
 			}
 		}
 		if ($errorCount == 0){
 			if ($conn !== FALSE){
 				//create SQL query
-				$SQLstring = "INSERT INTO card" .
-				" (morrisvilleid, cardname, cardnumber, cardtype, cardexp, cvv) " .
+				$SQLstring = "INSERT INTO payment" .
+				" (Morrisville_Id, Card_Name, Card_Number, Card_Type, Card_Exp, CVV, Payment_ID) " .
 				" VALUES".
-				"('$_POST[morrisvilleid]','$_POST[cardname]','$_POST[cardnumber]', '$_POST[cardtype]', '$_POST[cardexp]', '$_POST[cvv]')";
+				"('$_POST[Morrisville_Id]','$_POST[Card_Name]','$_POST[Card_Number]', '$_POST[Card_Type]', '$_POST[Card_Exp]', '$_POST[CVV]', '$_POST[Payment_ID]')";
 
 			$QueryResult = mysqli_query( $conn, $SQLstring);
 			if ($QueryResult === FALSE)
