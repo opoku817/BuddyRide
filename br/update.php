@@ -1,4 +1,5 @@
 <?php
+session_start();
 $DBName = "buddyridesystem";
 	$conn = mysqli_connect("localhost","root","");
 	if ($conn === FALSE)
@@ -13,10 +14,10 @@ $DBName = "buddyridesystem";
 			$conn = FALSE;
 		}
 	}
-//session_start();
+	$Morrisville_Id;
 //$_SESSION["MID"] = '1234';
 //select date to display
-		$SQLSelect = "SELECT * FROM students, payment, car WHERE students.Morrisville_Id = 123987456 AND car.Morrisville_Id= 123987456 AND payment.Morrisville_Id = 123987456";
+		$SQLSelect = "SELECT * FROM students, payment, car WHERE students.Morrisville_Id =" . $_SESSION['Morrisville_Id'] . " AND car.Morrisville_Id=" . $_SESSION['Morrisville_Id'] . " AND payment.Morrisville_Id =" . $_SESSION['Morrisville_Id'];
 		$result = mysqli_query($conn, $SQLSelect);
 		//if (mysqli_num_rows($result) > 0){
 		//output

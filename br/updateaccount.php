@@ -186,7 +186,6 @@ background-size: 500px 80px;}
 				$errorCount++;
 			}
 		}
-
 		//update information
 		if ($errorCount == 0){
 			if ($conn !== FALSE){
