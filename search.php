@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<!Doctype html>
+<html>
+<style>
+body {background-image:url(header1.jpg);
+background-position:top right;
+background-color :#65a773; 
+background-repeat:no-repeat;
+background-size: 500px 80px;}
+</style>
+<title>Buddy Ride System</title>
+<h1>Buddy Ride System </h1>
+<hr>
+<h2>Search Form:</h2> 
+<hr>
+<h3>
 <html lang="en">
 <head> <title>Buddy Ride System</title>
 <meta charset="utf-8">
@@ -6,137 +20,56 @@
 <style>
 body {background-image:url(morrisville.jpg);
 background-position:top right;
-background-color :#65a773; 
+background-color :#65a773;
 background-repeat:no-repeat;
 background-size: 500px 80px;}
 </style>
-<h1> Buddy Ride System</h1>
-<hr> 
+
 <h2> Ride Search:</h2>
 <?php
-	$DBName = "buddyridesystem";
-	$conn = mysqli_connect("localhost","root","");
-	if ($conn === FALSE)
-		echo "Connection error:".mysqli_error(). "\n";
-	else {
-		if(mysqli_select_db($conn, $DBName) === FALSE){
-	
-		echo "Could not select the \"$DBName\"".
-		"database:" . mysqli_error($conn). "\n";
-		//Close the connection
-		mysqli_close($conn);
-			$conn = FALSE;
-		}
-	}
-		$errorCount=0;
-		//validation CarID
-		if (empty($_POST["Car_ID"])){
-			echo "<p> Car ID field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_string($_POST["Car_ID"]))
-				$mid = $_POST["Car_ID"];
-			else{
-				echo("<p> Car ID field must be a numeric value! </p>");
-				$errorCount++;
-			}
-		}
-		//validation CarMake
-		if  (empty($_POST["Car_Make"])){
-			echo "<p> Car Make field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_string($_POST["Car_Make"]))
-				$mid = $_POST["Car_Make"];
-			else{
-				echo("<p> Car Make field must be a string value! </p>");
-				$errorCount++;
-			} 
-		}
-		//validation CarModel
-		if  (empty($_POST["Car_Model"])){
-			echo "<p> Car Model field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_string($_POST["Car_Model"]))
-				$mid = $_POST["Car_Model"];
-			else{
-				echo("<p> Car Model field must be a numeric value! </p>");
-				$errorCount++;
-			}
-		}
-		//validation CarYear
-		if  (empty($_POST["Car_Year"])){
-			echo "<p> Car Year field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_numeric($_POST["Car_Year"]))
-				$mid = $_POST["Car_Year"];
-			else{
-				echo("<p> Car Year field must be a string value! </p>");
-				$errorCount++;
-			}
-		}
-		//validation CarType
-		if (empty($_POST["Car_Type"])){
-			echo "<p> Car Type field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_string($_POST["Car_Type"]))
-				$mid = $_POST["Car_Type"];
-			else{
-				echo("<p> Car Type field must be a numeric value! </p>");
-				$errorCount++;
-			}
-		}
-		//validation Destination
-		if  (empty($_POST["Destination"])){
-			echo "<p> Destination field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_string($_POST["Destination"]))
-				$mid = $_POST["Destination"];
-			else{
-				echo("<p> Destination field must be a string value! </p>");
-				$errorCount++;
-			}
-		}
-		//validation MorrisvilleId
-		if (empty($_POST["Morrisville_Id"])){
-			echo "<p> Morrisville Id field required! </p>";
-			$errorCount++;
-		}
-		else {
-			if(is_numeric($_POST["Morrisville_Id"]))
-				$mid = $_POST["Morrisville_Id"];
-			else{
-				echo("<p> Morrisville Id field must be a numeric value! </p>");
-				$errorCount++;
-			}
-		}
-		
-		if ($errorCount == 0){
-			if ($conn !== FALSE){
-				//create SQL query
-				$SQLstring = "INSERT INTO car" .
-				" (Destination, Morrisville_Id, Car_Model, Car_ID, Car_Make, Car_Year, Car_Type) " .
-				" VALUES".
-				"('$_POST[Destination]','$_POST[Morrisville_Id]','$_POST[Car_Model]', '$_POST[Car_ID]', '$_POST[Car_Make]','$_POST[Car_Year]', '$_POST[Car_Type]')";
+$destination =  $_POST['Destination'];
+$make = $_POST['MakeCar'];
+$car=$_POST['TypeCar'];
 
-			$QueryResult = mysqli_query( $conn, $SQLstring);
-			if ($QueryResult === FALSE)
-				echo "<p>Unable to execute the query.</p>".
-					"<p>Error code" . mysqli_errno($conn).": "
-						. mysqli_error($conn) . "</p>";
-			else
-				echo "<p>Successfully added the record.<p>";
-			mysqli_close($conn);
-		}
-	}
+$DBName = "buddyridesystem";
+$conn = mysqli_connect("localhost","root","");
+if ($conn === FALSE)
+ echo "Connection error:".mysqli_error(). "\n";
+else {
+ if(mysqli_select_db($conn, $DBName) === FALSE){
+
+ echo "Could not select the \"$DBName\"".
+ "database:" . mysqli_error($conn). "\n";
+ //Close the connection
+ mysqli_close($conn);
+  $conn = FALSE;
+ }
+}
+	//create SQL query
+				$sql = "SELECT * FROM car WHERE Destination= '$destination' OR Car_Type = '$car' OR Car_Make = '$make'";
+				if($destination == "" and $make == "" and $car == ""){
+					$sql = "SELECT * FROM car";
+				}
+					
+				$result = mysqli_query($conn, $sql);
+				
+				
+				
+				
+				
+					if (mysqli_num_rows($result) > 0) {
+					// output data of each row
+					while($_SESSION = mysqli_fetch_assoc($result)) {
+						echo "ID:" .$_SESSION["Car_ID"]. " - CarMake: " . $_SESSION["Car_Make"]. " - CarModel: " . $_SESSION["Car_Model"]. 
+						" - CarYear: " . $_SESSION["Car_Year"]. " - CarType: " . $_SESSION["Car_Type"]. " - Destination: " . $_SESSION["Destination"]. 
+						" - MorrisvilleId: " . $_SESSION["Morrisville_Id"]. "<br>";
+					
+					
+					}
+				}
+				else{ 
+					echo 'No results found'; 
+
+			}
 ?>
+						
