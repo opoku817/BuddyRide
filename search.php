@@ -46,9 +46,9 @@ else {
  }
 }
 	//create SQL query
-				$sql = "SELECT * FROM car WHERE Destination= '$destination' OR Car_Type = '$car' OR Car_Make = '$make'";
+				$sql = "SELECT * FROM car, students WHERE (Destination= '$destination' OR Car_Type = '$car' OR Car_Make = '$make')AND car.Morrisville_Id = students.Morrisville_Id";
 				if($destination == "" and $make == "" and $car == ""){
-					$sql = "SELECT * FROM car";
+					$sql = "SELECT * FROM car, students WHERE car.Morrisville_Id = students.Morrisville_Id";
 				}
 					
 				$result = mysqli_query($conn, $sql);
@@ -60,7 +60,7 @@ else {
 					if (mysqli_num_rows($result) > 0) {
 					// output data of each row
 					while($_SESSION = mysqli_fetch_assoc($result)) {
-						echo "ID:" .$_SESSION["Car_ID"]. " - CarMake: " . $_SESSION["Car_Make"]. " - CarModel: " . $_SESSION["Car_Model"]. 
+						echo "First Name:" .$_SESSION["Firstname"]. "Last Name:" .$_SESSION["Lastname"]. "ID:" .$_SESSION["Car_ID"]. " - CarMake: " . $_SESSION["Car_Make"]. " - CarModel: " . $_SESSION["Car_Model"]. 
 						" - CarYear: " . $_SESSION["Car_Year"]. " - CarType: " . $_SESSION["Car_Type"]. " - Destination: " . $_SESSION["Destination"]. 
 						" - MorrisvilleId: " . $_SESSION["Morrisville_Id"]. "<br>";
 					
